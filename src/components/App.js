@@ -14,29 +14,20 @@ import {
 } 
 from 'react-native';
 import styles from '../styles/Styles'
-import Gridbutton from './gridbutton'
+import Gridbutton from './Gridbutton'
+import Gamescreen from './Gamescreen'
 
  // android: 'Double tap R on your keyboard to reload,\n' +
  //   'Shake or press menu button for dev menu',
 
 
 export default class App extends Component<{}> {
-  constructor(props)
-  {
-      super(props);
-      this.state={ score:0 }; 
-  }
-    scoreAPoint() {
-          
-      this.setState({
-          value: this.state.score + 1
-  });
-  }
+
 
   render() {
     return (
     <View style={styles.container}>
-    <Gridbutton buttonstyle={styles.buttonstyling} buttonName='press' iterationbutton={()=>this.scoreAPoint()}/>
+      <Text>'DUMMY TEXT'</Text>
     </View>
     );
   }

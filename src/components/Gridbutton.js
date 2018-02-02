@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
-    TouchableOpacity
+    TouchableNativeFeedback
 } from 'react-native';
 
 import styles from '../styles/Styles';
@@ -11,10 +11,12 @@ export default class gridbutton extends Component {
     render() {
         return (
             
-                <TouchableOpacity
-                    style={this.props.buttonstyle}
+                <TouchableNativeFeedback
                     onPress={() => this.props.iterationbutton()}>
-                    <Text style={styles.buttontext}>{this.props.buttonName}</Text></TouchableOpacity>
+                    <View style={styles.correctbuttonstyling}>
+                    
+                    </View>
+                </TouchableNativeFeedback>
             
         );
     }

@@ -16,11 +16,17 @@ export default StyleSheet.create({
       color: '#333333',
       marginBottom: 5,
     },
-    buttonstyling:
+    correctbuttonstyling:
     {
         padding:20,
         backgroundColor: 'lightblue',
         alignItems:'center'
         
     },
+    incorrectbuttonstyling:
+    {
+      padding:20,
+      backgroundColor: 'red',
+      alignItems:'center'
+    }
   });
