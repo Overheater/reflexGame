@@ -21,13 +21,18 @@ import Gamescreen from './Gamescreen'
  //   'Shake or press menu button for dev menu',
 
 
-export default class App extends Component<{}> {
+export default class App extends Component {
 
-
+  donothing()
+  {
+  //nothing to see here
+  };
   render() {
     return (
     <View style={styles.container}>
       <Text>'DUMMY TEXT'</Text>
+      <Gridbutton iterationbutton={()=> this.donothing()}/>
+      <Gamescreen/>
     </View>
     );
   }

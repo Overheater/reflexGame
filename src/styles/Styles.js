@@ -28,5 +28,11 @@ export default StyleSheet.create({
       padding:20,
       backgroundColor: 'red',
       alignItems:'center'
+    },
+    container: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#F5FCFF',
     }
   });

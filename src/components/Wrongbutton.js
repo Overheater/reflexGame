@@ -11,11 +11,9 @@ export default class Wrongbutton extends Component {
     render() {
         return (
             
-                <TouchableNativeFeedback
-                    onPress={() => this.props.failurepress()}>
-                    <View style={styles.incorrectbuttonstyling}>
-                    
-                    </View>
+                    <TouchableNativeFeedback
+                    onPress={() => this.props.failurepress()}
+                    style={styles.incorrectbuttonstyling}>                    
                     </TouchableNativeFeedback>
             
         );
