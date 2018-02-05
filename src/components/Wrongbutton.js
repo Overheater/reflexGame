@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
-    TouchableNativeFeedback
+    TouchableOpacity
 } from 'react-native';
 
 import styles from '../styles/Styles';
@@ -11,10 +11,10 @@ export default class Wrongbutton extends Component {
     render() {
         return (
             
-                    <TouchableNativeFeedback
+                    <TouchableOpacity
                     onPress={() => this.props.failurepress()}
                     style={styles.incorrectbuttonstyling}>                    
-                    </TouchableNativeFeedback>
+                    </TouchableOpacity>
             
         );
     }
