@@ -4,7 +4,7 @@ import {
   StyleSheet,
   Text,
   View,
-  TouchableNativeFeedback,
+  touchableOpacity,
   flex
 } 
 from 'react-native';
@@ -80,13 +80,16 @@ export default class Gamescreen extends Component {
           if (gridnumb===buttonfinder)
           {
             results.push(<Gridbutton iterationbutton={()=>this.scoreAPoint()} key={gridnumb}/>); //only use the index as a key if list will not change
+            console.log(gridnumb);
+
             gridnumb=gridnumb+1;
           }
           else
           {
             results.push(<Wrongbutton failurepress={()=>this.donothing()} key={gridnumb}/>); //only use the index as a key if list will not change
-            gridnumb=gridnumb+1;
             console.log(gridnumb);
+
+            gridnumb=gridnumb+1;
           }
 
         }

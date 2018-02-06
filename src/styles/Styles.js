@@ -19,20 +19,20 @@ export default StyleSheet.create({
     correctbuttonstyling:
     {
         padding:20,
-        backgroundColor: 'lightblue',
+        backgroundColor: '#D8C3A5',
         alignItems:'center'
         
     },
     incorrectbuttonstyling:
     {
       padding:20,
-      backgroundColor: 'red',
+      backgroundColor: '#E85A4F',
       alignItems:'center'
     },
     container: {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: '#F5FCFF',
+      backgroundColor: '#EAE7DC',
     }
   });
