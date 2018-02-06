@@ -12,6 +12,7 @@ import styles from '../styles/Styles'
 import Gridbutton from './Gridbutton'
 import Wrongbutton from './Wrongbutton'
 import TimerText from './Timertext'
+import PointText from './PointText'
 
  // android: 'Double tap R on your keyboard to reload,\n' +
  //   'Shake or press menu button for dev menu',
@@ -20,23 +21,26 @@ import TimerText from './Timertext'
  var gridnumb;
  var rownumb;
  var buttonfinder;
- var intervalID = window.setInterval(countdown(), 1000);
+
 export default class Gamescreen extends Component {
   
     //make the score keeper state value, if this hits 15 before the timer state hits 20, change to the victory view
     constructor(props)
     {
+   
         super(props);
-        this.state={ score:0 };
-        this.state={time:10} ;
+        this.buttonfinder=(Math.floor((Math.random() *1000)%40));
+        this.state={time:10,score:0} ;
+        //this.countdown();
+        this.intervalID = setInterval(()=>this.countdown(), 1000);
     }
 
  
     //the state function that adds a point to the state value, presumably when you press the blue buttton
       scoreAPoint() {
-            
+        this.buttonfinder=(Math.floor((Math.random()  *1000)%40));
         this.setState({
-            value: this.state.score + 1
+            score: this.state.score + 1
     });
     }
     //dummy function for the first version of the game
@@ -49,25 +53,27 @@ export default class Gamescreen extends Component {
   this.setState({
     time: this.state.time - 1
   });
-}
+  };
+
       createrows(){
-        buttonfinder=(Math.floor((Math.random() * 39)+1));
+        
         console.log(buttonfinder);
         gridnumb=0;
         rownumb=0;
         let rows = [];
-        for(let i = 0; i < 5; i++) 
+        for(let i = 0; i < 8; i++) 
         {
           rows.push(this.createWithLoop()); //only use the index as a key if list will not change
           rownumb++;
         }
         return (<View style={{ display: 'flex', flexDirection: 'column', alignContent:'space-between'}}>{rows}</View>);
       }
+
       createWithLoop(){
         let results = [];
-        for(let i = 0; i < 8; i++) 
+        for(let i = 0; i < 5; i++) 
         {
-          if (gridnumb===buttonfinder)
+          if (gridnumb===this.buttonfinder)
           {
             results.push(<Gridbutton iterationbutton={()=>this.scoreAPoint()} key={gridnumb}/>); //only use the index as a key if list will not change
             console.log(gridnumb);
@@ -90,6 +96,7 @@ export default class Gamescreen extends Component {
     <View style={styles.container}>
     <View style={styles.scorebar}>
     <TimerText timerval={this.state.time}/>
+    <PointText PointVal={this.state.score}/>
     </View>
     <View style={styles.Component}>
     {this.createrows()}

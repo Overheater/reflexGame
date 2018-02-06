@@ -8,11 +8,11 @@ import {
 } from 'react-native';
 import styles from '../styles/Styles';
 // enables the state function for iterating the number after pressing either button
-export default class Timertext extends  Component
+export default class PointText extends  Component
 {
     render() {
         return (
-        <Text>{this.props.timerval}</Text>
+        <Text>{this.props.PointVal}</Text>
                 );
             }
 }

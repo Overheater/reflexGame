@@ -18,14 +18,16 @@ export default StyleSheet.create({
     },
     correctbuttonstyling:
     {
-        padding:20,
+        padding:30,
+        margin:4,
         backgroundColor: '#D8C3A5',
         alignItems:'center'
         
     },
     incorrectbuttonstyling:
     {
-      padding:20,
+      padding:30,
+      margin:4,
       backgroundColor: '#E85A4F',
       alignItems:'center'
     },
@@ -34,5 +36,6 @@ export default StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#EAE7DC',
-    }
+    },
+
   });

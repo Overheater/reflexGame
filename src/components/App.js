@@ -30,8 +30,7 @@ export default class App extends Component {
   render() {
     return (
     <View style={styles.container}>
-      <Text>'DUMMY TEXT'</Text>
-      <Gridbutton iterationbutton={()=> this.donothing()}/>
+
       <Gamescreen/>
     </View>
     );
