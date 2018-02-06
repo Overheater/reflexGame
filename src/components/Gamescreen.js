@@ -11,7 +11,7 @@ from 'react-native';
 import styles from '../styles/Styles'
 import Gridbutton from './Gridbutton'
 import Wrongbutton from './Wrongbutton'
-import gridbutton from './Gridbutton';
+import TimerText from './Timertext'
 
  // android: 'Double tap R on your keyboard to reload,\n' +
  //   'Shake or press menu button for dev menu',
@@ -20,14 +20,17 @@ import gridbutton from './Gridbutton';
  var gridnumb;
  var rownumb;
  var buttonfinder;
+ var intervalID = window.setInterval(countdown(), 1000);
 export default class Gamescreen extends Component {
   
     //make the score keeper state value, if this hits 15 before the timer state hits 20, change to the victory view
     constructor(props)
     {
         super(props);
-        this.state={ score:0 }; 
+        this.state={ score:0 };
+        this.state={time:10} ;
     }
+
  
     //the state function that adds a point to the state value, presumably when you press the blue buttton
       scoreAPoint() {
@@ -42,24 +45,11 @@ export default class Gamescreen extends Component {
     //nothing to see here
     }
    
-  /*  createbuttongrid()
-      {
-      
-      buttonfinder=((Math.random() * 40));
-        for(let i=0; i<5;i++)
-        {
-          for(let j=0; j<8; j++)
-          {
-            if(gridnumb===buttonfinder)
-            {<Gridbutton iterationbutton={()=>this.scoreAPoint()}></Gridbutton>}
-            else
-            {
-              <Wrongbutton failurepress={()=>this.donothing()}></Wrongbutton>
-            }
-            gridnumb++;
-          }
-        }
-      }*/
+ countdown() {
+  this.setState({
+    time: this.state.time - 1
+  });
+}
       createrows(){
         buttonfinder=(Math.floor((Math.random() * 39)+1));
         console.log(buttonfinder);
@@ -98,7 +88,9 @@ export default class Gamescreen extends Component {
   render() {
     return (
     <View style={styles.container}>
-    <View style={styles.scorebar}></View>
+    <View style={styles.scorebar}>
+    <TimerText timerval={this.state.time}/>
+    </View>
     <View style={styles.Component}>
     {this.createrows()}
     </View>
