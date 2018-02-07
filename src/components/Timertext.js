@@ -12,7 +12,7 @@ export default class Timertext extends  Component
 {
     render() {
         return (
-        <Text>{this.props.timerval}</Text>
+        <Text style={styles.ScreenText}>{this.props.timerval}</Text>
                 );
             }
 }

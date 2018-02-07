@@ -12,7 +12,7 @@ export default class PointText extends  Component
 {
     render() {
         return (
-        <Text>{this.props.PointVal}</Text>
+        <Text style={this.props.pointstyle}>{this.props.PointVal}</Text>
                 );
             }
 }

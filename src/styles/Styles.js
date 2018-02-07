@@ -18,6 +18,7 @@ export default StyleSheet.create({
     },
     correctbuttonstyling:
     {
+      borderRadius: 3,
         padding:30,
         margin:4,
         backgroundColor: '#D8C3A5',
@@ -26,6 +27,7 @@ export default StyleSheet.create({
     },
     incorrectbuttonstyling:
     {
+      borderRadius: 3,
       padding:30,
       margin:4,
       backgroundColor: '#E85A4F',
@@ -36,6 +38,11 @@ export default StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: '#EAE7DC',
+    },
+    ScreenText:
+    {
+      justifyContent: 'center',
+      fontSize: 20,
     },
 
   });

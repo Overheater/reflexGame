@@ -13,7 +13,7 @@ import Gridbutton from './Gridbutton'
 import Wrongbutton from './Wrongbutton'
 import TimerText from './Timertext'
 import PointText from './PointText'
-import SecondLevel from './SecondLevel'
+import GameScreen from './Gamescreen'
 
  // android: 'Double tap R on your keyboard to reload,\n' +
  //   'Shake or press menu button for dev menu',
@@ -23,7 +23,7 @@ import SecondLevel from './SecondLevel'
  var rownumb;
  var buttonfinder;
 
-export default class Gamescreen extends Component {
+export default class SecondLevel extends Component {
   
     //make the score keeper state value, if this hits 15 before the timer state hits 20, change to the victory view
     constructor(props)
@@ -39,7 +39,7 @@ export default class Gamescreen extends Component {
     }
 
  
-    //the state function that adds a point to the state value, presumably when you press the blue buttton
+    //the state function that adds a point to the state value, presumably when you press the gold buttton
       scoreAPoint() {
         this.buttonfinder=(Math.floor((Math.random()  *1000)%40));
         this.setState({
@@ -47,9 +47,12 @@ export default class Gamescreen extends Component {
     });
     }
     //dummy function for the first version of the game
-    donothing()
+    Failure()
     {
-    //nothing to see here
+        this.setState({
+            currentpart:'Failure'
+          });
+         
     }
    
  countdown() {
@@ -102,15 +105,6 @@ export default class Gamescreen extends Component {
         }
         return (<View style={{ display: 'flex', flexDirection: 'row', alignContent:'space-between'}}>{results}</View>);
       }
-
-      LoseGame()
-      {
-       
-          this.setState({
-            currentpart:'Loss'
-          });
-         
-      }
       WinGame()
       {
        
@@ -119,16 +113,30 @@ export default class Gamescreen extends Component {
           });
          
       }
-      nextgame()
+      menu()
       {
        
           this.setState({
-            currentpart:'Next'
+            currentpart:'Menu'
           });
          
       }
-
-      
+      LoseGame()
+      {
+       
+          this.setState({
+            currentpart:'Loss'
+          });
+         
+      }
+      StartGame()
+      {
+       
+          this.setState({
+            currentpart:'FirstGame'
+          });
+         
+      }
   render() {
 if(this.state.currentpart==='Game'){
   return (
@@ -162,23 +170,38 @@ return(
   <Text style={styles.ScreenText}>You Needed 15 Correct button presses,</Text>
   <Text style={styles.ScreenText}>You got</Text>
   <PointText pointstyle={styles.ScreenText} PointVal={this.state.score}/>
-  <Text style={styles.ScreenText}>Ready to play the next level?</Text>
-  <Text style={styles.ScreenText}>Press the  button below!</Text>
-  <Gridbutton iterationbutton={()=>this.nextgame()} />
+  <Text style={styles.ScreenText}>You beat my game! Congratulations</Text>
+  <Text style={styles.ScreenText}>Press the  button below to go back to the main menu</Text>
+  <Gridbutton iterationbutton={()=>this.menu()} />
+  
   </View>
 );
   }
-  if(this.state.currentpart==='Next')
+  if(this.state.currentpart==='Failure')
   {
-    return(
     <View style={styles.container}>
-    <SecondLevel/>
-</View>
+      <Text style={styles.ScreenText}>You Lost!</Text>
+      <Text style={styles.ScreenText}>You Pressed an incorrect button</Text>
+      <Text style={styles.ScreenText}>if you want to try again, press the button below</Text>
+        
+    </View>
+  }
+   if(this.state.currentpart==='Menu'){
+    return (
+      <View style={styles.container}>
+      <Text style={styles.ScreenText}>Welcome to Ian Pougher's tap it project</Text>
+      <Text style={styles.ScreenText}>press the button below to start!</Text>
+      <Gridbutton iterationbutton={()=>this.Startgame()} />
+      </View>
+    );
+  }
+  if(this.state.currentpart==='FirstGame'){
+    return (
+      <View style={styles.container}>
+        <GameScreen/>
+      </View>
     );
   }
 
 }
 }
-
-
-
