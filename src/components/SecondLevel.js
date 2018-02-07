@@ -47,23 +47,17 @@ export default class SecondLevel extends Component {
     });
     }
     //dummy function for the first version of the game
-    Failure()
-    {
-        this.setState({
-            currentpart:'Failure'
-          });
-         
-    }
+
    
  countdown() {
   this.setState({
     time: this.state.time - 1
   });
-  if(this.state.time===0&&this.state.score<4)
+  if(this.state.time===0&&this.state.score<20&&this.state.currentpart!='Failure')
   {
     this.LoseGame();
   }
-  else if(this.state.time===0&& this.state.score>4)
+  else if(this.state.time===0&& this.state.score>20&&this.state.currentpart!='Failure')
   {
     this.WinGame();
   }
@@ -96,7 +90,7 @@ export default class SecondLevel extends Component {
           }
           else
           {
-            results.push(<Wrongbutton failurepress={()=>this.donothing()} key={gridnumb}/>); //only use the index as a key if list will not change
+            results.push(<Wrongbutton failurepress={()=>this.Failure()} key={gridnumb}/>); //only use the index as a key if list will not change
             console.log(gridnumb);
 
             gridnumb=gridnumb+1;
@@ -137,6 +131,22 @@ export default class SecondLevel extends Component {
           });
          
       }
+      Failure()
+      {
+          this.setState({
+              currentpart:'Failure',
+              time:0
+            });
+           
+      }
+      Restart()
+      {
+       
+          this.setState({
+            currentpart:'Restart'
+          });
+         
+      }
   render() {
 if(this.state.currentpart==='Game'){
   return (
@@ -156,9 +166,12 @@ if(this.state.currentpart==='Game'){
   return(
     <View style={styles.container}>
     <Text style={styles.ScreenText}>You Lost!</Text>
-    <Text style={styles.ScreenText}>You Needed 15 Correct button presses,</Text>
+    <Text style={styles.ScreenText}>You Needed 20 Correct button presses,</Text>
     <Text style={styles.ScreenText}>You got</Text>
     <PointText pointstyle={styles.ScreenText} PointVal={this.state.score}/>
+    <Text style={styles.ScreenText}>press the button to</Text>
+    <Text style={styles.ScreenText}>Restart this level</Text>
+    <Gridbutton iterationbutton={()=>this.Restart()} />
     </View>
   );
   }
@@ -167,11 +180,12 @@ if(this.state.currentpart==='Game'){
 return(
   <View style={styles.container}>
   <Text style={styles.ScreenText}>You Won!</Text>
-  <Text style={styles.ScreenText}>You Needed 15 Correct button presses,</Text>
+  <Text style={styles.ScreenText}>You Needed 20 Correct button presses,</Text>
   <Text style={styles.ScreenText}>You got</Text>
   <PointText pointstyle={styles.ScreenText} PointVal={this.state.score}/>
   <Text style={styles.ScreenText}>You beat my game! Congratulations</Text>
-  <Text style={styles.ScreenText}>Press the  button below to go back to the main menu</Text>
+  <Text style={styles.ScreenText}>Press the button below</Text> 
+  <Text style={styles.ScreenText}>to go back to the main menu</Text>
   <Gridbutton iterationbutton={()=>this.menu()} />
   
   </View>
@@ -179,20 +193,31 @@ return(
   }
   if(this.state.currentpart==='Failure')
   {
+    return(
     <View style={styles.container}>
       <Text style={styles.ScreenText}>You Lost!</Text>
       <Text style={styles.ScreenText}>You Pressed an incorrect button</Text>
-      <Text style={styles.ScreenText}>if you want to try again, press the button below</Text>
-        
+      <Text style={styles.ScreenText}>if you want to try again</Text>
+      <Text style={styles.ScreenText}> press the button below</Text>
+      <Gridbutton iterationbutton={()=>this.Restart()} />
     </View>
+    );
   }
    if(this.state.currentpart==='Menu'){
     return (
       <View style={styles.container}>
       <Text style={styles.ScreenText}>Welcome to Ian Pougher's tap it project</Text>
       <Text style={styles.ScreenText}>press the button below to start!</Text>
-      <Gridbutton iterationbutton={()=>this.Startgame()} />
+      <Gridbutton iterationbutton={()=>this.StartGame()}/>
       </View>
+    );
+  }
+  if(this.state.currentpart==='Restart')
+  {
+    return(
+    <View style={styles.container}>
+    <SecondLevel/>
+</View>
     );
   }
   if(this.state.currentpart==='FirstGame'){

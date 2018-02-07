@@ -127,6 +127,14 @@ export default class Gamescreen extends Component {
           });
          
       }
+      Restart()
+      {
+       
+          this.setState({
+            currentpart:'Restart'
+          });
+         
+      }
 
       
   render() {
@@ -151,6 +159,7 @@ if(this.state.currentpart==='Game'){
     <Text style={styles.ScreenText}>You Needed 15 Correct button presses,</Text>
     <Text style={styles.ScreenText}>You got</Text>
     <PointText pointstyle={styles.ScreenText} PointVal={this.state.score}/>
+    <Gridbutton iterationbutton={()=>this.Restart()} />
     </View>
   );
   }
@@ -173,6 +182,14 @@ return(
     return(
     <View style={styles.container}>
     <SecondLevel/>
+</View>
+    );
+  }
+  if(this.state.currentpart==='Restart')
+  {
+    return(
+    <View style={styles.container}>
+    <Gamescreen/>
 </View>
     );
   }

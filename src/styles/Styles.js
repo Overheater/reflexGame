@@ -44,5 +44,11 @@ export default StyleSheet.create({
       justifyContent: 'center',
       fontSize: 20,
     },
+    ScoreBar:
+    {
+      display: 'flex',
+       flexDirection: 'row'
+
+    }
 
   });
